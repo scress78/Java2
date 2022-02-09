@@ -13,9 +13,15 @@
 
 <input type="text" name="userNumberOne" size="10">  
 <input type="text" name="userNumberTwo" size="10">
-
-
 <input type="submit" value="Perform Operations!">
+</form>
+
+<form action="getConcatenationServlet" method="post"
+>Enter two numbers to perform concatenation
+
+<input type="text" name="userNumberOneC" size="10">  
+<input type="text" name="userNumberTwoC" size="10">
+<input type="submit" value="Perform Concatenation!">
 </form>
 
 </body>
