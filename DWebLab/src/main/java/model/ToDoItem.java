@@ -16,7 +16,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="items")
+@Table(name="todoitems")
 public class ToDoItem {
 	@Id
 	@GeneratedValue
