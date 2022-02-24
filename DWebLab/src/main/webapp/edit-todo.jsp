@@ -8,6 +8,7 @@
 <title>Edit To-Do Item</title>
 </head>
 <body>
+	<!-- edits to-do Items! -->
 	<form action = "EditToDoServlet" method="post">
 	Description: <input type ="text" name = "description" value= "${toDoToEdit.description}">
 	Priority: <input type = "text" name = "priority" value= "${toDoToEdit.priority}">

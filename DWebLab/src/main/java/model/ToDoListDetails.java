@@ -31,42 +31,40 @@ public class ToDoListDetails {
 	private int id; // select explanatory
 	private String listName; // Kind of a placeholder. Name of specific To-Do-List
 	
-	//private LocalDate tripDate; // don't mess with datetime yet.
-	// can be used for things like complete, or complete by etc. Re-write, constructor, get/set/
 	
 	//  OTM types. Match classes ToDoItem and ToDoUser
 	@ManyToOne(cascade=CascadeType.PERSIST)
-	private ToDoUser ToDoUser;
+	private ToDoUser toDoUser;
 	
 	//@JoinTable
-	// Merge used below
-	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+	// Merge used below // always RETURN HERE AND CHECK MERGE VS PERSIST!
+	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	private List<ToDoItem> listOfToDoItems;
 	
 	
-	public ToDoListDetails(int id, String listName, ToDoUser ToDoUser, List<ToDoItem> listOfToDoItems) {
+	public ToDoListDetails(int id, String listName, ToDoUser toDoUser, List<ToDoItem> listOfToDoItems) {
 		this.id = id;
 		this.listName = listName;
-		this.ToDoUser = ToDoUser;
+		this.toDoUser = toDoUser;
 		this.listOfToDoItems = listOfToDoItems;
 	}
 	
 		
-	public ToDoListDetails(String listName, ToDoUser ToDoUser, List<ToDoItem> listOfToDoItems) {
+	public ToDoListDetails(String listName, ToDoUser toDoUser, List<ToDoItem> listOfToDoItems) {
 		this.listName = listName;
-		this.ToDoUser = ToDoUser;
+		this.toDoUser = toDoUser;
 		this.listOfToDoItems = listOfToDoItems;
 	}
 	
-	public ToDoListDetails(String listName, ToDoUser ToDoUser) {
+	public ToDoListDetails(String listName, ToDoUser toDoUser) {
 		this.listName = listName;
-		this.ToDoUser = ToDoUser;
+		this.toDoUser = toDoUser;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "ToDoListDetails [id=" + id + ", listName=" + listName + ", ToDoUser=" + ToDoUser
+		return "ToDoListDetails [id=" + id + ", listName=" + listName + ", ToDoUser=" + toDoUser
 				+ ", listOfToDoItems=" + listOfToDoItems + "]";
 	}
 	
@@ -89,14 +87,16 @@ public class ToDoListDetails {
 	}
 	
 	public ToDoUser getToDoUser() {
-		return ToDoUser;
+		return toDoUser;
 	}
 	public void setToDoUser(ToDoUser ToDoUser) {
-		this.ToDoUser = ToDoUser;
+		this.toDoUser = ToDoUser;
 	}
 	public List<ToDoItem> getlistOfToDoItems() {
 		return listOfToDoItems;
 	}
+	
+	// there is a capitalization error here, it's risky to track it way down. Note anyway!
 	public void setlistOfToDoItems(List<ToDoItem> listOfToDoItems) {
 		this.listOfToDoItems = listOfToDoItems;
 	}

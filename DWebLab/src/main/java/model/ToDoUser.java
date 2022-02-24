@@ -18,6 +18,7 @@ public class ToDoUser {
 	@GeneratedValue
 	private int id;
 	private String userName;
+	
 	public ToDoUser() {
 		super();
 		// TODO Auto-generated constructor stub

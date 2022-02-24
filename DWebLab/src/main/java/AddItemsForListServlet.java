@@ -1,4 +1,4 @@
-package controller;
+
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.ToDoItem;
+import controller.ToDoItemHelper;
 
 /**
- * Servlet implementation class EditToDoServlet
+ * Servlet implementation class AddItemsForListServlet
  */
-@WebServlet("/EditToDoServlet")
-public class EditToDoServlet extends HttpServlet {
+@WebServlet("/AddItemsForListServlet")
+public class AddItemsForListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditToDoServlet() {
+    public AddItemsForListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,7 +29,13 @@ public class EditToDoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ToDoItemHelper dao = new ToDoItemHelper();
+		request.setAttribute("allItems", dao.showAllItems());
+		if(dao.showAllItems().isEmpty()){
+		request.setAttribute("allItems", " ");
+		}
+		getServletContext().getRequestDispatcher("/new-list.jsp").forward(request, response);
+		
 	}
 
 	/**
@@ -37,22 +43,7 @@ public class EditToDoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		//edits to-do item!
-		ToDoItemHelper dao = new ToDoItemHelper();
-		String description = request.getParameter("description");
-		String priority = request.getParameter("priority");
-		String complete = request.getParameter("complete");
-		Integer tempId = Integer.parseInt(request.getParameter("id"));
-		ToDoItem itemToUpdate = dao.searchForItemById(tempId);
-		itemToUpdate.setDescription(description);
-		itemToUpdate.setPriority(priority);
-		itemToUpdate.setComplete(complete);
-		dao.updateItem(itemToUpdate);
-		getServletContext().getRequestDispatcher("/ViewAllToDoServlet").forward(request, response);
-		
-		
-		//doGet(request, response);
+		doGet(request, response);
 	}
 
 }
