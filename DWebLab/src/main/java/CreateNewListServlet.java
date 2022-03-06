@@ -77,7 +77,8 @@ public class CreateNewListServlet extends HttpServlet {
 		System.out.println("Success!");
 		System.out.println(sld.toString());
 		
-		getServletContext().getRequestDispatcher("/ViewAllListsServlet").forward(request, response);
+		//not completely confident that this is the right path, but seems likely
+		getServletContext().getRequestDispatcher("/ViewAllAddressDetailsServlet").forward(request, response);
 		
 		
 	}

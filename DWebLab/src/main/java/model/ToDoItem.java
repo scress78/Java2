@@ -46,6 +46,7 @@ public class ToDoItem {
 	public void setComplete(String complete) {
 		this.complete = complete;
 	}
+	
 	public int getId() {
 		return id;
 	}
