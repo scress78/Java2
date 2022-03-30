@@ -5,19 +5,33 @@
  */
 package dmacc.beans;
 
-/**
- * @author sunga
- *
- */
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Entity
 public class Development {
-	private long id;
+	@Id
+	@GeneratedValue
+	private int id;
 	private String name;
 	private String address;
 	private String buildingCount;
+	@Autowired
+	private Building building;
+	
+	public Building getBuilding() {
+		return building;
+	}
+	public void setBuilding(Building building) {
+		this.building = building;
+	}
 	public long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -41,7 +55,7 @@ public class Development {
 	public void setBuildingCount(String buildingCount) {
 		this.buildingCount = buildingCount;
 	}
-	public Development(long id, String name, String address, String buildingCount) {
+	public Development(int id, String name, String address, String buildingCount) {
 		super();
 		this.id = id;
 		this.name = name;
