@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View all developments</title>
+</head>
+<body>
+	<form>
+		<table>
+			<tr th:each="currentDevelopment : ${developments}" >
+			<td th:text="${currentDevelopment.id}" />
+			 <td th:text="${currentDevelopment.name}" />
+			 <td th:text="${currentDevelopment.address}" />
+			 <td th:text="${currentDevelopment.buildingCount}" />
+			 <td><a th:href="@{/edit/{id}(id=${currentDevelopment.id})}">Edit</a></td>
+			 <td><a th:href="@{/delete/{id}(id=${currentDevelopment.id})}">Delete</a></td>
+			</tr>
+		</table>
+	</form>
+<a href="inputDevelopment">Add a new development</a>
+</body>
+</html>

@@ -19,16 +19,17 @@ public class Development {
 	private String name;
 	private String address;
 	private String buildingCount;
-	@Autowired
-	private Building building;
-	
+	//@Autowired
+	//private Building building;
+	/*
 	public Building getBuilding() {
 		return building;
 	}
 	public void setBuilding(Building building) {
 		this.building = building;
 	}
-	public long getId() {
+	*/
+	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -62,6 +63,19 @@ public class Development {
 		this.address = address;
 		this.buildingCount = buildingCount;
 	}
+	
+	public Development(String name, String address, String buildingCount) {
+		super();
+		this.name = name;
+		this.address = address;
+		this.buildingCount = buildingCount;
+	}
+	
+	public Development(String name) {
+		super();
+		this.name = name;
+	}
+	
 	@Override
 	public String toString() {
 		return "Development [id=" + id + ", name=" + name + ", address=" + address + ", buildingCount=" + buildingCount

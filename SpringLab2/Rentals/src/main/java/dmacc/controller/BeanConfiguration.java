@@ -7,6 +7,7 @@ package dmacc.controller;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import dmacc.beans.Building;
 import dmacc.beans.Development;
 
 @Configuration
@@ -16,4 +17,5 @@ public class BeanConfiguration {
 		Development bean = new Development();
 		return bean;
 	}
+
 }
