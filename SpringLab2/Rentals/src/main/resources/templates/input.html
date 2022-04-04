@@ -4,10 +4,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <meta charset="UTF-8">
 <title>Insert New Contact</title>
+<script type = "text/javascript">
+	function validate(){
+		if(document.rentalForm.name.value == ""){
+			alert("Please Provide Development Name!");
+			document.rentalForm.name.focus();
+			return false;
+		}
+		if(document.rentalForm.address.value == ""){
+			alert("Please Provide Development Address!");
+			document.rentalForm.address.focus();
+			return false;
+		}
+		if(document.rentalForm.buildingCount.value == ""){
+			alert("Please Provide Development Building Count!");
+			document.rentalForm.buildingCount.focus();
+			return false;
+		}
+		buildingCount = parseInt(document.rentalForm.buildingCount.value);
+		if(isNaN(buildingCount)){
+			alert("Please Enter Building Count as an Integer!");
+			document.rentalForm.buildingCount.focus();
+			return false;
+		}
+		return true;
+	}
+	
+	
+
+</script>
+
 </head>
 <body>
-	<form th:object="${newDevelopment}" th:action="@{/inputDevelopment}"
-	method='POST'>
+	<form name="rentalForm" th:object="${newDevelopment}" th:action="@{/inputDevelopment}" 
+	onsubmit="return(validate());"	method='POST'>
 	Name: <input name="name" size="20" th:field="*{name}"> <br />
 	Address: <input name="address" size="10" th:field="*{address}"><br />
 	Building Count: <input name="buildingCount" size="20" th:field="*{buildingCount}"><br />
